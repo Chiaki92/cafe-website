@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+/* 全体の設定：老舗らしく明朝体で */
+body {
+    font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+    margin: 0;
+    padding: 0;
+    color: #3e3a39; /* 濃いグレー */
+    background-color: #fdfcf8; /* 生成り色（真っ白すぎない） */
+    line-height: 1.8;
+}
+
+/* レイアウト共通 */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* ヘッダー */
+header {
+    background-color: #4b3621; /* 珈琲豆のような濃い茶色 */
+    color: #fff;
+    padding: 60px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 0.2em;
+}
+
+header .tagline {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+/* ナビゲーション */
+nav {
+    background-color: #332211;
+    text-align: center;
+}
+
+nav ul {
+    margin: 0;
+    padding: 10px 0;
+    list-style: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+/* メイン画像エリア（仮） */
+.hero {
+    background-color: #ccc;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+}
+
+/* 見出し */
+h2 {
+    text-align: center;
+    border-bottom: 1px solid #4b3621;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+}
+
+/* メニューリスト */
+.menu-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.menu-list dt {
+    width: 70%;
+    border-bottom: 1px dotted #ccc;
+    margin-bottom: 15px;
+}
+
+.menu-list dd {
+    width: 20%;
+    text-align: right;
+    margin-bottom: 15px;
+    margin-left: 0;
+    font-weight: bold;
+}
+
+/* 背景色切り替え */
+.bg-light {
+    background-color: #f5f3ef; /* 少し濃いベージュ */
+}
+
+/* 店舗情報テーブル */
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.info-table th, .info-table td {
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+}
+
+.info-table th {
+    width: 30%;
+    background-color: #f9f9f9;
+}
+
+/* フッター */
+footer {
+    background-color: #4b3621;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.8rem;
+}
+
+/* スマホ対応（レスポンシブ） */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    .menu-list dt {
+        width: 60%;
+    }
+}
