@@ -3,78 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>喫茶 〇〇｜こだわりの自家焙煎珈琲</title>
+    <title>喫茶 吉田</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <h1>喫茶 〇〇</h1>
-            <p class="tagline">昭和〇年創業。変わらぬ味と時間を。</p>
-        </div>
-    </header>
+    <div class="container">
+        
+        <header class="header">
+            <h1>喫茶 吉田</h1>
+        </header>
 
-    <nav>
-        <ul>
-            <li><a href="#about">お店について</a></li>
-            <li><a href="#menu">お品書き</a></li>
-            <li><a href="#access">店舗情報</a></li>
-        </ul>
-    </nav>
+        <main>
+            <section class="hero-section">
+                <div class="image-box">
+                    <img src="top.jpg" alt="コーヒーを淹れる様子">
+                    <p class="hero-text">心をほどく、一杯の魔法。</p>
+                </div>
+            </section>
 
-    <div class="hero">
-        <p>（ここに店内や珈琲の写真を入れます）</p>
-    </div>
+            <section class="content-section">
+                <h2>MASTER: 店主吉田の想い</h2>
+                <p class="founded">1974年創業</p>
+                <p class="text-body">
+                    今の気分に合わせた、あなただけの一杯を。<br>
+                    豆選びから始まる、心安らぐひと時を。
+                </p>
+            </section>
 
-    <section id="about" class="container">
-        <h2>ご挨拶</h2>
-        <p>
-            街の喧騒を忘れ、ゆっくりとした時間を過ごしていただきたい。<br>
-            創業以来、変わらぬ淹れ方で一杯ずつ丁寧に珈琲を落としています。<br>
-            お一人様でも、本を片手に静かなひとときをお楽しみください。
-        </p>
-    </section>
+            <section class="content-section">
+                <h2>MENU: 当店の定番</h2>
+                <div class="menu-image-box">
+                    <img src="menu.jpg" alt="メニュー写真">
+                </div>
+                <ul class="menu-list">
+                    <li>・珈琲 ¥400</li>
+                    <li>・カフェラテ ¥450</li>
+                    <li>・スコーン ¥300</li>
+                    <li>・日替わりケーキ ¥500</li>
+                    <li>・サンドイッチ ¥500</li>
+                    <li>・固めのレトロプリン ¥300 <span class="tax-note">(全て税別)</span></li>
+                </ul>
+            </section>
 
-    <section id="menu" class="container bg-light">
-        <h2>お品書き</h2>
-        <dl class="menu-list">
-            <dt>ブレンド珈琲</dt>
-            <dd>500円</dd>
-            <dt>カフェオレ</dt>
-            <dd>550円</dd>
-            <dt>自家製チーズケーキ</dt>
-            <dd>450円</dd>
-            <dt>懐かしのナポリタン</dt>
-            <dd>800円</dd>
-        </dl>
-    </section>
+            <section class="content-section">
+                <h2>ACCESS: 店舗情報</h2>
+                <div class="access-info">
+                    <p>営業時間：7:00〜20:00</p>
+                    <p>定休日：日曜日</p>
+                    <p>住所：香川県高松市常磐町1-3-1</p>
+                </div>
 
-    <section id="access" class="container">
-        <h2>店舗情報</h2>
-        <table class="info-table">
-            <tr>
-                <th>営業時間</th>
-                <td>08:00 〜 18:00（L.O. 17:30）</td>
-            </tr>
-            <tr>
-                <th>定休日</th>
-                <td>毎週水曜日</td>
-            </tr>
-            <tr>
-                <th>住所</th>
-                <td>〇〇県〇〇市〇〇町 1-2-3</td>
-            </tr>
-            <tr>
-                <th>電話番号</th>
-                <td>03-1234-5678</td>
-            </tr>
-        </table>
-    </section>
+                <div class="map-box">
+                    <img src="https://placehold.co/600x300/ddd/888?text=MAP:+Google+Maps" alt="地図">
+                </div>
+            </section>
 
-    <footer>
-        <p>&copy; 2024 Kissa OO All Rights Reserved.</p>
-    </footer>
+            <section class="button-area">
+                <a href="tel:00000000000" class="btn">
+                    電話をかける<br>
+                    <span class="btn-sub">(00000000000)</span>
+                </a>
+                
+                <a href="https://maps.google.com/?q=香川県高松市常磐町1-3-1" target="_blank" class="btn">
+                    現在地から経路案内<br>
+                    <span class="btn-sub">(Google Maps起動)</span>
+                </a>
+            </section>
+        </main>
 
-</body>
+    </div></body>
 </html>

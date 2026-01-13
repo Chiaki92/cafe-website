@@ -1,142 +1,143 @@
-@charset "UTF-8";
-
-/* 全体の設定：老舗らしく明朝体で */
+/* ページ全体の設定 */
 body {
-    font-family: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+    background-color: #dcdcdc; /* 背景のグレー（アプリ外側の色） */
+    font-family: 'Shippori Mincho', serif; /* 明朝体 */
     margin: 0;
-    padding: 0;
-    color: #3e3a39; /* 濃いグレー */
-    background-color: #fdfcf8; /* 生成り色（真っ白すぎない） */
-    line-height: 1.8;
+    padding: 20px;
+    color: #4b3b32; /* 文字色：濃い茶色 */
 }
 
-/* レイアウト共通 */
+/* スマホ画面のような白いカード枠 */
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
+    background-color: #f9f7f2; /* カードの背景色：クリーム色 */
+    max-width: 480px; /* 横幅をスマホサイズに制限 */
+    margin: 0 auto;   /* 画面中央に配置 */
+    padding: 20px;
+    border-radius: 10px; /* 角を丸くする */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* うっすら影をつける */
+}
+
+/* 画像の基本設定 */
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
 }
 
 /* ヘッダー */
-header {
-    background-color: #4b3621; /* 珈琲豆のような濃い茶色 */
-    color: #fff;
-    padding: 60px 0;
+.header {
     text-align: center;
+    margin-bottom: 20px;
 }
 
-header h1 {
+.header h1 {
+    font-size: 24px;
     margin: 0;
-    font-size: 2.5rem;
-    letter-spacing: 0.2em;
+    font-weight: normal;
 }
 
-header .tagline {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin-top: 10px;
-}
-
-/* ナビゲーション */
-nav {
-    background-color: #332211;
-    text-align: center;
-}
-
-nav ul {
-    margin: 0;
-    padding: 10px 0;
-    list-style: none;
-}
-
-nav ul li {
-    display: inline-block;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.9rem;
-}
-
-/* メイン画像エリア（仮） */
-.hero {
-    background-color: #ccc;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #555;
-}
-
-/* 見出し */
-h2 {
-    text-align: center;
-    border-bottom: 1px solid #4b3621;
-    padding-bottom: 10px;
+/* 各セクション共通 */
+.content-section {
     margin-bottom: 30px;
-    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd; /* 視覚的な区切りのため薄い線を追加 */
+    padding-bottom: 5px;
+}
+
+/* メイン画像（ヒーローセクション） */
+.hero-section {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.hero-text {
+    text-align: right;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff; /* 写真の上に乗るので白文字 */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* 文字が読みやすいように影 */
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    margin: 0;
+}
+
+/* 文章まわり */
+.founded {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.text-body {
+    font-size: 14px;
+    line-height: 1.8;
 }
 
 /* メニューリスト */
+.menu-image-box {
+    margin-bottom: 15px;
+}
+
 .menu-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    list-style: none; /* 点を消す */
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
 }
 
-.menu-list dt {
-    width: 70%;
-    border-bottom: 1px dotted #ccc;
-    margin-bottom: 15px;
+.menu-list li {
+    margin-bottom: 5px;
 }
 
-.menu-list dd {
-    width: 20%;
-    text-align: right;
-    margin-bottom: 15px;
-    margin-left: 0;
-    font-weight: bold;
+.tax-note {
+    font-size: 12px;
 }
 
-/* 背景色切り替え */
-.bg-light {
-    background-color: #f5f3ef; /* 少し濃いベージュ */
+/* アクセス情報 */
+.access-info p {
+    margin: 5px 0;
+    font-size: 14px;
 }
 
-/* 店舗情報テーブル */
-.info-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.info-table th, .info-table td {
-    border-bottom: 1px solid #ddd;
-    padding: 15px;
-    text-align: left;
-}
-
-.info-table th {
-    width: 30%;
-    background-color: #f9f9f9;
-}
-
-/* フッター */
-footer {
-    background-color: #4b3621;
-    color: #fff;
+.map-box {
+    margin-top: 15px;
+    background-color: #ddd;
     text-align: center;
-    padding: 20px 0;
-    font-size: 0.8rem;
 }
 
-/* スマホ対応（レスポンシブ） */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 1.8rem;
-    }
-    .menu-list dt {
-        width: 60%;
-    }
+/* ボタンのデザイン */
+.button-area {
+    display: flex;
+    flex-direction: column; /* 縦並び */
+    gap: 10px; /* ボタン同士の間隔 */
+    margin-top: 20px;
+}
+
+.btn {
+    display: block;
+    background-color: #5e4b35; /* ボタンの色：濃い茶色 */
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.8; /* カーソルを乗せた時に少し薄くする */
+}
+
+.btn-sub {
+    font-size: 12px;
+    font-weight: normal;
+    display: block;
+    margin-top: 2px;
 }
