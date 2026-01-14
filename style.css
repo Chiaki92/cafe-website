@@ -145,44 +145,46 @@ h2 {
 
 /* --- マスター紹介エリア（横並び・画像自動縮小版） --- */
 
-/* 親の箱 */
+/* --- 外枠 --- */
 .master-area {
-    display: flex;       /* 横並び */
-    align-items: center; /* 上下の中心揃え */
-    gap: 10px;           /* 隙間を少し詰めてスペース確保 */
-    width: 100%;         /* 横幅いっぱい使う */
+    display: flex;             /* 横並び */
+    align-items: center;       /* 上下中央揃え */
+    gap: 20px;                 /* 画像と文字の間隔 */
 }
 
-/* 画像の箱（ここが自動で縮みます） */
+/* --- 画像を入れている箱 --- */
 .master-img-box {
-    flex-shrink: 1;  /* ★重要：スペースが足りない時は縮む！ */
-    flex-grow: 0;    /* 勝手に伸びない */
-    min-width: 0;    /* ★重要：限界まで小さくなれるようにする設定 */
-    
-    /* 基本のサイズ（PCなど広い画面の時のサイズ） */
-    width: 150px; 
+    /* 特に指定しなくてOKですが、必要なら幅などを指定 */
 }
 
-/* 画像本体 */
+/* --- 画像そのもの --- */
 .master-icon {
-    width: 100%;       /* 箱に合わせて画像も小さくなる */
-    height: auto;      /* 高さはなりゆき */
-    object-fit: cover; /* 歪まないように */
-    border-radius: 5px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    display: block;    /* 隙間ズレ防止 */
+    width: 200px;              /* PCでの幅 */
+    height: 200px;             /* 高さ（正方形に） */
+    object-fit: cover;         /* トリミング */
+    object-position: center;   /* 中心基準 */
+    border-radius: 10px;       /* 角丸 */
 }
 
-/* 文章の箱 */
+/* --- 文章の箱 --- */
 .master-text-box {
-    flex-shrink: 0;  /* ★重要：文章は絶対に縮まない（文字優先） */
-    /* 幅は文章の長さに合わせる */
+    /* 必要なら幅などを指定 */
 }
 
-/* 文章の中身 */
-.master-area .text-body {
-    white-space: nowrap; /* ★重要：絶対に改行しない */
-    font-size: 13px;     /* スマホでも入りきるよう少し小さめ推奨 */
-    line-height: 1.8;
+/* --- 文章の中身 --- */
+.text-body {
     margin: 0;
+    line-height: 1.8;
+    white-space: nowrap;       /* 改行させない */
+}
+
+/* --- スマホ用 --- */
+@media (max-width: 600px) {
+    .master-icon {
+        width: 100px;
+        height: 100px;
+    }
+    .text-body {
+        font-size: 12px;
+    }
 }
