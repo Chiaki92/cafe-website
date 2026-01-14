@@ -75,7 +75,7 @@ h2 {
 }
 
 .text-body {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.8;
 }
 
@@ -97,6 +97,7 @@ h2 {
 
 .tax-note {
     font-size: 12px;
+    margin-left: 10px;  /* 左側に10pxの隙間を空ける */
 }
 
 /* アクセス情報 */
@@ -140,4 +141,42 @@ h2 {
     font-weight: normal;
     display: block;
     margin-top: 2px;
+}
+
+/* 親の箱 */
+.master-area {
+    display: flex;       /* 横並びにする */
+    align-items: center; /* 上下の中心を揃える */
+    gap: 15px;           /* 画像と文章の隙間（少し狭くしました） */
+    overflow: hidden;    /* はみ出し防止 */
+}
+
+/* 画像を入れる箱（ここが自動で動きます） */
+.master-img-box {
+    flex-shrink: 1;  /* ★重要：文章に押されたら縮んでOKという設定 */
+    width: 150px;    /* 画像の基準サイズ */
+    min-width: 80px; /* どんなに縮んでもこれ以上は小さくならないサイズ */
+}
+
+/* 画像のデザイン */
+.master-icon {
+    width: 100%;       /* 箱の幅いっぱいに広げる */
+    height: auto;      /* 高さはなりゆき */
+    aspect-ratio: 1/1; /* 正方形の比率を保つ（お好みで削除可） */
+    object-fit: cover; /* 縮んでも画像が歪まないようにする */
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 文章を入れる箱 */
+.master-text-box {
+    flex-grow: 1;    /* 余ったスペースは全部使う */
+    min-width: 0;    /* フレックスボックスのバグ防止（これがないと縮まないことがある） */
+}
+
+/* マスターエリア内の文章だけの特別設定 */
+.master-area .text-body {
+    white-space: nowrap; /* ★重要：絶対に改行させない命令 */
+    font-size: 13px;     /* 一行に収めるため少し文字を小さく */
+    margin: 0;           /* 余計な余白をカット */
 }
