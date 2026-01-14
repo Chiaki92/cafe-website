@@ -143,40 +143,46 @@ h2 {
     margin-top: 2px;
 }
 
+/* --- マスター紹介エリア（横並び・画像自動縮小版） --- */
+
 /* 親の箱 */
 .master-area {
-    display: flex;       /* 横並びにする */
-    align-items: center; /* 上下の中心を揃える */
-    gap: 15px;           /* 画像と文章の隙間（少し狭くしました） */
-    overflow: hidden;    /* はみ出し防止 */
+    display: flex;       /* 横並び */
+    align-items: center; /* 上下の中心揃え */
+    gap: 10px;           /* 隙間を少し詰めてスペース確保 */
+    width: 100%;         /* 横幅いっぱい使う */
 }
 
-/* 画像を入れる箱（ここが自動で動きます） */
+/* 画像の箱（ここが自動で縮みます） */
 .master-img-box {
-    flex-shrink: 1;  /* ★重要：文章に押されたら縮んでOKという設定 */
-    width: 150px;    /* 画像の基準サイズ */
-    min-width: 80px; /* どんなに縮んでもこれ以上は小さくならないサイズ */
+    flex-shrink: 1;  /* ★重要：スペースが足りない時は縮む！ */
+    flex-grow: 0;    /* 勝手に伸びない */
+    min-width: 0;    /* ★重要：限界まで小さくなれるようにする設定 */
+    
+    /* 基本のサイズ（PCなど広い画面の時のサイズ） */
+    width: 150px; 
 }
 
-/* 画像のデザイン */
+/* 画像本体 */
 .master-icon {
-    width: 100%;       /* 箱の幅いっぱいに広げる */
+    width: 100%;       /* 箱に合わせて画像も小さくなる */
     height: auto;      /* 高さはなりゆき */
-    aspect-ratio: 1/1; /* 正方形の比率を保つ（お好みで削除可） */
-    object-fit: cover; /* 縮んでも画像が歪まないようにする */
+    object-fit: cover; /* 歪まないように */
     border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: block;    /* 隙間ズレ防止 */
 }
 
-/* 文章を入れる箱 */
+/* 文章の箱 */
 .master-text-box {
-    flex-grow: 1;    /* 余ったスペースは全部使う */
-    min-width: 0;    /* フレックスボックスのバグ防止（これがないと縮まないことがある） */
+    flex-shrink: 0;  /* ★重要：文章は絶対に縮まない（文字優先） */
+    /* 幅は文章の長さに合わせる */
 }
 
-/* マスターエリア内の文章だけの特別設定 */
+/* 文章の中身 */
 .master-area .text-body {
-    white-space: nowrap; /* ★重要：絶対に改行させない命令 */
-    font-size: 13px;     /* 一行に収めるため少し文字を小さく */
-    margin: 0;           /* 余計な余白をカット */
+    white-space: nowrap; /* ★重要：絶対に改行しない */
+    font-size: 13px;     /* スマホでも入りきるよう少し小さめ推奨 */
+    line-height: 1.8;
+    margin: 0;
 }
