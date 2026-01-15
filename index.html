@@ -5,86 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>喫茶 吉田</title>
     <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Zen+Old+Mincho:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="container">
-        
-        <header class="header">
-            <h1>喫茶 吉田</h1>
-        </header>
+<div class="container">
+    <header>
+        <h1>喫茶 吉田</h1>
+    </header>
 
-        <main>
-            <section class="hero-section">
-                <div class="image-box">
-                    <img src="top.jpg" alt="コーヒーを淹れる様子">
-                    <p class="hero-text">心をほどく、一杯の魔法。</p>
-                </div>
-            </section>
+    <div class="hero">
+        <img src="top.jpg" alt="ハンドドリップコーヒー">
+        <div class="hero-text">心をほどく、一杯の魔法。</div>
+    </div>
 
-        <section class="content-section">
-            <h2>MASTER: 店主吉田の想い</h2>
-
-            <div class="master-area">
-                
-                <div class="master-img-box">
-                    <img src="master.png" alt="店主の写真" class="master-icon">
-                </div>
-
-                <div class="master-text-box">
-                    <p class="text-body">
-                        1974年から続く薫り<br>
-                        今の気分を伺って豆を選び<br>
-                        あなただけの一杯をお淹れします
-                    </p>
-                </div>
-
+    <div class="content-padding">
+        <div class="intro">
+            <div class="intro-text">
+                <p>
+                    1974年から続く薫り<br>
+                    今の気分を伺って豆を選び<br>
+                    あなただけの一杯をお淹れします
+                </p>
+                <span class="master-name">MASTER: Iris Yoshida</span>
             </div>
-            </section>
+            <img src="master.png" alt="店主写真" class="intro-img">
+        </div>
 
-            <section class="content-section">
-                <h2>MENU: 当店の定番</h2>
-                <div class="menu-image-box">
-                    <img src="menu.jpg" alt="メニュー写真">
-                </div>
-                <ul class="menu-list">
-                    <li>・珈琲 ¥400</li>
-                    <li>・カフェラテ ¥450</li>
-                    <li>・スコーン ¥300</li>
-                    <li>・日替わりケーキ ¥500</li>
-                    <li>・サンドイッチ ¥500</li>
-                    <li>・固めのレトロプリン ¥300 <span class="tax-note">(全て税別)</span></li>
-                </ul>
-            </section>
+        <section>
+            <h2>MENU: 当店の定番</h2>
+            <img src="menu.jpg" alt="メニューセット" class="menu-img">
+            
+            <ul class="menu-list">
+                <li>珈琲　¥400</li>
+                <li>カフェラテ　¥450</li>
+                <li>スコーン　¥300</li>
+                <li>日替わりケーキ　¥500</li>
+                <li>サンドイッチ　¥500</li>
+                <li>固めのレトロプリン　¥300 <span class="tax-note">(全て税別)</span></li>
+            </ul>
+            <div class="takeout-info">
+                <i class="fa-solid fa-bag-shopping"></i> 2026年春よりテイクアウト開始予定 <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+        </section>
 
-            <section class="content-section">
-                <h2>ACCESS: 店舗情報</h2>
-                <div class="access-info">
-                    <p>営業時間：7:00〜20:00</p>
-                    <p>定休日：日曜日</p>
-                    <p>住所：香川県高松市常磐町1-3-1</p>
-                </div>
+        <section>
+            <h2>ACCESS: 店舗情報</h2>
+            <ul class="access-list">
+                <li>
+                    <i class="fa-regular fa-clock"></i>
+                    <span>営業時間：7:00〜20:00</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-store-slash"></i>
+                    <span>定休日：日曜日</span>
+                </li>
+                <li>
+                    <i class="fa-regular fa-credit-card"></i>
+                    <span>支払方法：現金のみ</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-smoking"></i>
+                    <span>喫煙情報：喫煙可能（分煙なし）</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-chair"></i>
+                    <span>座席：カウンター●席、テーブル●席</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>住所：香川県高松市常磐町1-3-1</span>
+                </li>
+            </ul>
 
-                <div class="map-box">
-                    <img src="https://placehold.co/600x300/ddd/888?text=MAP:+Google+Maps" alt="地図">
-                </div>
-            </section>
+            <div class="map-container">
+               <iframe src="https://maps.google.com/maps?q=34.342,134.045&z=15&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            </div>
 
-            <section class="button-area">
-                <a href="tel:00000000000" class="btn">
+            <div class="btn-area">
+                <a href="tel:0000000000" class="btn">
                     電話をかける<br>
-                    <span class="btn-sub">(00000000000)</span>
+                    <small>(0000000000)</small>
                 </a>
-                
-                <a href="https://maps.google.com/?q=香川県高松市常磐町1-3-1" target="_blank" class="btn">
+                <a href="https://www.google.com/maps/dir/?api=1&destination=香川県高松市常磐町1-3-1" target="_blank" class="btn">
                     現在地から経路案内<br>
-                    <span class="btn-sub">(Google Maps起動)</span>
+                    <small>(Google Maps起動)</small>
                 </a>
-            </section>
-        </main>
+            </div>
+        </section>
+    </div>
 
-    </div></body>
+    <footer>
+        © 2026 Kissa Yoshida
+    </footer>
+</div>
+
+</body>
 </html>

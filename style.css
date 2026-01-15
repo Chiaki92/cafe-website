@@ -1,190 +1,233 @@
-/* ページ全体の設定 */
+:root {
+    --bg-color: #f4f1ea;       /* 背景のクリーム色 */
+    --text-color: #4a3b32;     /* 文字の焦げ茶色 */
+    --accent-color: #5d4037;   /* ボタンなどの濃い茶色 */
+    --white: #ffffff;
+}
+
 body {
-    background-color: #dcdcdc; /* 背景のグレー（アプリ外側の色） */
-    font-family: 'Shippori Mincho', serif; /* 明朝体 */
     margin: 0;
-    padding: 20px;
-    color: #4b3b32; /* 文字色：濃い茶色 */
+    padding: 0;
+    background-color: #e0e0e0; /* スマホ枠外の背景 */
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
-/* スマホ画面のような白いカード枠 */
+/* スマホ画面をシミュレートするコンテナ */
 .container {
-    background-color: #f9f7f2; /* カードの背景色：クリーム色 */
-    max-width: 480px; /* 横幅をスマホサイズに制限 */
-    margin: 0 auto;   /* 画面中央に配置 */
-    padding: 20px;
-    border-radius: 10px; /* 角を丸くする */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* うっすら影をつける */
-}
-
-/* 画像の基本設定 */
-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 4px;
+    max-width: 480px;
+    margin: 0 auto;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    position: relative;
+    padding-bottom: 40px;
 }
 
 /* ヘッダー */
-.header {
+header {
     text-align: center;
-    margin-bottom: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(74, 59, 50, 0.1);
 }
 
-.header h1 {
-    font-size: 24px;
+h1 {
+    font-family: 'Zen Old Mincho', serif;
+    font-size: 28px;
     margin: 0;
-    font-weight: normal;
-}
-
-/* 各セクション共通 */
-.content-section {
-    margin-bottom: 30px;
+    letter-spacing: 0.1em;
 }
 
 h2 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #ddd; /* 視覚的な区切りのため薄い線を追加 */
+    font-family: 'Zen Old Mincho', serif;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--text-color);
     padding-bottom: 5px;
+    display: inline-block;
 }
 
-/* メイン画像（ヒーローセクション） */
-.hero-section {
+/* メインビジュアル */
+.hero {
     position: relative;
-    margin-bottom: 30px;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .hero-text {
-    text-align: right;
-    font-size: 14px;
-    font-weight: bold;
-    color: #fff; /* 写真の上に乗るので白文字 */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* 文字が読みやすいように影 */
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    bottom: 15px;
+    right: 15px;
+    color: var(--white);
+    font-family: 'Zen Old Mincho', serif;
+    font-size: 18px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    letter-spacing: 0.1em;
+}
+
+/* コンテンツ共通の余白 */
+.content-padding {
+    padding: 0 20px;
+}
+
+/* 店主紹介エリア */
+.intro {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.intro-text {
+    flex: 1;
+    font-size: 13px;
+}
+
+.intro-text p {
     margin: 0;
-}
-
-/* 文章まわり */
-.founded {
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
-.text-body {
-    font-size: 15px;
     line-height: 1.8;
 }
 
-/* メニューリスト */
-.menu-image-box {
+.master-name {
+    display: block;
+    margin-top: 8px;
+    font-family: 'Zen Old Mincho', serif;
+    text-align: right;
+    font-weight: bold;
+}
+
+.intro-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+/* メニューエリア */
+.menu-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
     margin-bottom: 15px;
 }
 
 .menu-list {
-    list-style: none; /* 点を消す */
+    list-style: none;
     padding: 0;
     margin: 0;
     font-size: 15px;
 }
 
 .menu-list li {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    border-bottom: 1px dotted rgba(74, 59, 50, 0.3);
+    padding-bottom: 2px;]
+    display: flex;              /* フレックスボックス化 */
+    justify-content: space-between; /* 要素を両端に配置 */
+    align-items: baseline;      /* 文字のベースライン（下揃え）を合わせる */
 }
 
 .tax-note {
-    font-size: 12px;
-    margin-left: 10px;  /* 左側に10pxの隙間を空ける */
+    font-size: 0.8em;
+    margin-left: 10px; /* 左側に少し余白を作る */
+    white-space: nowrap; /* スマホで狭くなっても改行させない */
 }
 
-/* アクセス情報 */
-.access-info p {
-    margin: 5px 0;
+.takeout-info {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 15px;
+    color: #666;
+}
+
+/* 店舗情報エリア */
+.access-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     font-size: 14px;
 }
 
-.map-box {
-    margin-top: 15px;
-    background-color: #ddd;
-    text-align: center;
+.access-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
 }
 
-/* ボタンのデザイン */
-.button-area {
+.access-list i {
+    width: 25px;
+    text-align: center;
+    margin-right: 10px;
+    margin-top: 4px;
+    font-size: 16px;
+}
+
+/* マップ */
+.map-container {
+    width: 100%;
+    height: 150px;
+    background-color: #ddd;
+    margin: 20px 0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* ボタン */
+.btn-area {
     display: flex;
-    flex-direction: column; /* 縦並び */
-    gap: 10px; /* ボタン同士の間隔 */
+    flex-direction: column;
+    gap: 10px;
     margin-top: 20px;
 }
 
 .btn {
     display: block;
-    background-color: #5e4b35; /* ボタンの色：濃い茶色 */
-    color: #fff;
-    text-decoration: none;
+    width: 100%;
+    padding: 15px 0;
+    background-color: var(--accent-color);
+    color: var(--white);
     text-align: center;
-    padding: 15px;
-    border-radius: 5px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 16px;
     font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     transition: opacity 0.3s;
 }
 
 .btn:hover {
-    opacity: 0.8; /* カーソルを乗せた時に少し薄くする */
+    opacity: 0.9;
 }
 
-.btn-sub {
+.btn small {
+    display: block;
     font-size: 12px;
     font-weight: normal;
-    display: block;
     margin-top: 2px;
 }
 
-/* --- マスター紹介エリア（横並び・画像自動縮小版） --- */
-
-/* --- 外枠 --- */
-.master-area {
-    display: flex;             /* 横並び */
-    align-items: center;       /* 上下中央揃え */
-    gap: 20px;                 /* 画像と文字の間隔 */
-}
-
-/* --- 画像を入れている箱 --- */
-.master-img-box {
-    /* 特に指定しなくてOKですが、必要なら幅などを指定 */
-}
-
-/* --- 画像そのもの --- */
-.master-icon {
-    width: 200px;              /* PCでの幅 */
-    height: 200px;             /* 高さ（正方形に） */
-    object-fit: cover;         /* トリミング */
-    object-position: center;   /* 中心基準 */
-    border-radius: 10px;       /* 角丸 */
-}
-
-/* --- 文章の箱 --- */
-.master-text-box {
-    /* 必要なら幅などを指定 */
-}
-
-/* --- 文章の中身 --- */
-.text-body {
-    margin: 0;
-    line-height: 1.8;
-    white-space: nowrap;       /* 改行させない */
-}
-
-/* --- スマホ用 --- */
-@media (max-width: 600px) {
-    .master-icon {
-        width: 100px;
-        height: 100px;
-    }
-    .text-body {
-        font-size: 12px;
-    }
+/* フッター */
+footer {
+    text-align: center;
+    font-size: 10px;
+    color: #888;
+    margin-top: 40px;
 }
