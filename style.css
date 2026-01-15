@@ -231,3 +231,88 @@ footer {
     color: #888;
     margin-top: 40px;
 }
+
+/* --- Q&A（よくある質問）のデザイン --- */
+
+/* 大枠のタイトル部分 */
+.faq-title {
+    list-style: none; /* デフォルトの三角印を消す */
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between; /* 文字と矢印を左右に */
+    align-items: center;
+    padding: 10px 0;
+}
+
+/* Chrome/Safari等のデフォルト三角印を消すための呪文 */
+.faq-title::-webkit-details-marker {
+    display: none;
+}
+
+/* 開いている時に矢印を回転させる */
+details[open] .faq-title i {
+    transform: rotate(180deg);
+    transition: transform 0.3s;
+}
+
+/* 質問リスト全体の余白 */
+.faq-list {
+    margin-bottom: 30px;
+    border-top: 1px solid var(--text-color);
+}
+
+/* 個別の質問アイテム */
+.faq-item {
+    border-bottom: 1px dotted rgba(74, 59, 50, 0.3);
+}
+
+.faq-item summary {
+    padding: 15px 0;
+    cursor: pointer;
+    font-weight: bold;
+    list-style: none; /* 三角印を消す */
+    position: relative;
+}
+
+/* 質問のテキストの右側に＋マークを出す装飾 */
+.faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    font-weight: normal;
+    font-size: 1.2em;
+}
+
+/* 開いている時は－マークにする */
+.faq-item[open] summary::after {
+    content: '-';
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+/* 回答エリア */
+.faq-answer {
+    padding: 10px 15px;
+    background-color: rgba(93, 64, 55, 0.05); /* 薄い茶色の背景 */
+    font-size: 14px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.faq-answer p {
+    margin: 0;
+}
+
+/* QとAのマーク装飾 */
+.q-mark {
+    color: var(--accent-color);
+    margin-right: 5px;
+}
+
+.a-mark {
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-right: 5px;
+}
