@@ -88,22 +88,46 @@ h2 {
     gap: 15px;
 }
 
+/* style.css の修正箇所 */
+
+/* 大枠のエリア（写真の横の空間） */
 .intro-text {
     flex: 1;
-    font-size: 13px;
+    font-size: 15px;
+    font-family: 'Zen Old Mincho', serif;
+    /* 中にある「透明な箱」を中央に寄せる */
+    display: flex;
+    justify-content: center;
 }
 
+/* ▼新しく作った「透明な箱」の設定 */
+.text-wrapper {
+    /* 中身（文章）の文字数に合わせて幅を縮める */
+    width: fit-content;
+    /* 中身を縦積みにする */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 文章の設定（前の設定から少し整理しました） */
 .intro-text p {
     margin: 0;
     line-height: 1.8;
+    text-align: left; /* 左揃え */
 }
 
+/* 店主の名前の設定 */
 .master-name {
     display: block;
     margin-top: 8px;
     font-family: 'Zen Old Mincho', serif;
-    text-align: right;
     font-weight: bold;
+    
+    /* ▼ここがポイント！▼ */
+    /* 透明な箱の中で、自分だけ右端（end）に寄る */
+    align-self: flex-end;
+    /* テキスト自体も右寄せにする */
+    text-align: right;
 }
 
 .intro-img {
@@ -133,7 +157,7 @@ h2 {
 .menu-list li {
     margin-bottom: 8px;
     border-bottom: 1px dotted rgba(74, 59, 50, 0.3);
-    padding-bottom: 2px;]
+    padding-bottom: 2px;
     display: flex;              /* フレックスボックス化 */
     justify-content: space-between; /* 要素を両端に配置 */
     align-items: baseline;      /* 文字のベースライン（下揃え）を合わせる */
