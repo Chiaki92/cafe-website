@@ -48,6 +48,11 @@ h2 {
     padding-bottom: 5px;
     display: inline-block;
 }
+/* ▼▼▼ 追加：MENUの見出しの上余白を縮める設定 ▼▼▼ */
+/* id="menu" の中にある h2 だけ、上の余白を減らす */
+#menu h2 {
+    margin-top: 15px; /* 元々は30px。これを10〜15pxくらいにすると近づきます */
+}
 
 /* メインビジュアル */
 .hero {
@@ -425,4 +430,43 @@ details[open] .faq-title i {
     font-weight: bold;
     color: var(--accent-color);
     margin-right: 5px;
+}
+
+.page-nav {
+    text-align: center;
+    border-top: 1px solid rgba(74, 59, 50, 0.2);
+    border-bottom: 1px solid rgba(74, 59, 50, 0.2);
+    background-color: transparent;
+    
+    /* 上下2pxだと文字が線に近すぎる場合があるので、4pxくらいが黄金比かもしれません。
+       もちろん2pxでもOKです！お好みで。 */
+    padding: 4px 0;
+    
+    /* 下の余白は5pxでOK */
+    margin: 25px 0 5px 0;
+    
+    width: 100%;
+    font-family: 'Zen Old Mincho', serif;
+    letter-spacing: 0.1em;
+}
+
+/* リンクの文字（ホバー時の背景がはみ出さないよう調整） */
+.page-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+    
+    /* ▼ 枠が細くなった分、ここの縦余白(padding)も減らさないと、
+       ホバーした時に背景色が線に被ってしまいます */
+    padding: 2px 12px; 
+    
+    display: inline-block;
+    border-radius: 4px;
+}
+.page-nav a:hover {
+    opacity: 1;               /* 透明にはしない */
+    background-color: rgba(93, 64, 55, 0.1); /* 背景に「薄い焦げ茶」をつける */
+    color: #000;              /* 文字を「真っ黒」にしてコントラストを上げる */
 }
