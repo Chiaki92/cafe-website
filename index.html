@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@400;500;700&family=Zen+Old+Mincho:wght@700&display=swap" rel="stylesheet">
 </head>
@@ -24,10 +24,12 @@
         <span></span>
     </div>
 
-    <nav class="drawer-menu" id="js-drawer">
+   <nav class="drawer-menu" id="js-drawer">
         <div class="drawer-inner">
             <p class="menu-title">CONTENTS</p>
             <ul>
+                <li><a href="#" class="nav-link">TOP</a></li>
+                
                 <li><a href="#menu" class="nav-link">MENU</a></li>
                 <li><a href="#info" class="nav-link">INFORMATION</a></li>
                 <li><a href="#qa" class="nav-link">Q&A</a></li>
@@ -35,14 +37,15 @@
             <div class="drawer-footer">喫茶 吉田</div>
         </div>
     </nav>
+    
     <div class="menu-overlay" id="js-overlay"></div>
-  
+    
     <div class="hero" id="js-hero">
         <div class="slide active">
             <img src="top.jpg" alt="ハンドドリップ">
         </div>
         <div class="slide">
-            <img src="top2.png" alt="店内の様子">
+            <img src="top2.jpg" alt="店内の様子">
         </div>
         <div class="slide">
             <img src="top3.jpg" alt="テラス席">
@@ -73,21 +76,26 @@
 
         <section id="menu">
             <h2>MENU: 当店の定番</h2>
-            <img src="menu.jpg" alt="メニューセット" class="menu-img">
+            
+            <div class="menu-img-wrap">
+                <img src="menu.jpg" alt="メニューセット" class="menu-img" id="js-menu-img">
+            </div>
             
             <ul class="menu-list">
-                <li>珈琲　¥400</li>
-                <li>カフェラテ　¥450</li>
-                <li>スコーン　¥300</li>
-                <li>日替わりケーキ　¥500</li>
-                <li>サンドイッチ　¥500</li>
-                <li>固めのレトロプリン　¥300 <span class="tax-note">(全て税別)</span></li>
+                <li data-zoom="zoom-coffee">珈琲　¥400</li>
+                <li data-zoom="zoom-latte">カフェラテ　¥450</li>
+                <li data-zoom="zoom-scone">スコーン　¥300</li>
+                <li data-zoom="zoom-cake">日替わりケーキ　¥500</li>
+                <li data-zoom="zoom-sand">サンドイッチ　¥500</li>
+                <li data-zoom="zoom-pudding">固めのレトロプリン　¥300 <span class="tax-note">(全て税別)</span></li>
             </ul>
+
             <div class="takeout-info">
                 <i class="fa-solid fa-bag-shopping"></i> 2026年春よりテイクアウト開始予定 <i class="fa-solid fa-bag-shopping"></i>
             </div>
         </section>
 
+        
         <section id="info">
             <h2>INFORMATION: 店舗情報</h2>
             <ul class="access-list">
@@ -212,7 +220,7 @@
     let slideInterval;
 
     // 丸い点々（ドット）を画像の数だけ自動で作る
-    if (slides.length > 0) { // エラー防止：スライドがある時だけ実行
+    if (slides.length > 0) {
         slides.forEach((_, i) => {
             const dot = document.createElement('div');
             dot.classList.add('dot');
@@ -223,9 +231,9 @@
     }
     const dots = document.querySelectorAll('.dot');
 
-    // スライドを切り替える関数
+    // スライドを切り替える関数（安全対策済み）
     function goToSlide(n) {
-        if (slides.length === 0) return; // エラー防止
+        if (slides.length === 0) return; 
 
         // 現在のactiveクラスを外す
         slides[currentSlide].classList.remove('active');
@@ -260,8 +268,31 @@
 
     // ページが開いたらタイマースタート
     startTimer();
-</script>
 
+    // ▼▼▼ 3. メニュー画像のズーム制御（ここを追加しました！） ▼▼▼
+    const menuImg = document.getElementById('js-menu-img');
+    const menuItems = document.querySelectorAll('.menu-list li');
+
+    if (menuImg && menuItems.length > 0) {
+        menuItems.forEach(item => {
+            // マウスが乗った時
+            item.addEventListener('mouseenter', () => {
+                const zoomClass = item.getAttribute('data-zoom');
+                if(zoomClass) {
+                    menuImg.classList.add(zoomClass);
+                }
+            });
+
+            // マウスが離れた時
+            item.addEventListener('mouseleave', () => {
+                const zoomClass = item.getAttribute('data-zoom');
+                if(zoomClass) {
+                    menuImg.classList.remove(zoomClass);
+                }
+            });
+        });
+    }
+</script>
 
 </body>
 </html>

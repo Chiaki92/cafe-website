@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 :root {
     /* オールドローズ（ピンク茶）配色 */
     --bg-color: #fcf9f2;       /* 背景：温かみのある生成り色 */
@@ -7,23 +9,35 @@
     --white: #ffffff;
 }
 
+html {
+    /* これ1行だけで、スクロールが滑らかになります */
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     padding: 0;
-    background-color: #e0e0e0;
     
-    /* ▼▼▼ ここを変更（アンティークなゴシック体へ） ▼▼▼ */
+    /* 元の単色塗り */
+    /* background-color: #e0e0e0; */
+    
+    /* ▼▼▼ ここを変更 ▼▼▼ */
+    /* 中心は生成り色、外側に行くほど少し暗いグレーになるグラデーション */
+    background: radial-gradient(circle, #e0e0e0 60%, #cfcfcf 100%);
+    
     font-family: 'Zen Kaku Gothic Antique', sans-serif;
-    
     color: var(--text-color);
     line-height: 1.6;
 }
 
-/* スマホ画面をシミュレートするコンテナ */
+/* コンテナ（スマホ画面部分）にも雰囲気出し */
 .container {
     max-width: 480px;
     margin: 0 auto;
-    background-color: var(--bg-color);
+    
+    /* 背景色を「単色」から「紙のような質感」に見えるグラデーションに変更 */
+    background: radial-gradient(circle, var(--bg-color) 80%, #efebe0 100%);
+    
     min-height: 100vh;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
     position: relative;
@@ -39,7 +53,7 @@ header {
 }
 
 h1 {
-    font-family: 'Zen Old Mincho', serif;
+    font-family: 'Zen Old Mincho', serif; /* 店名は明朝体 */
     font-size: 28px;
     margin: 0;
     letter-spacing: 0.1em;
@@ -173,59 +187,55 @@ h2 {
     visibility: visible;
 }
 
-/* メインビジュアル */
-/* メインビジュアル（スライドショー対応） */
+/* --- メインビジュアル（スライドショー） --- */
 .hero {
     position: relative;
     width: 100%;
-    height: 300px; /* スマホでの高さ */
+    height: 300px;
     overflow: hidden;
-    background-color: #000; /* 画像読み込み中の背景 */
+    background-color: #000;
 }
 
-/* スライド（画像）の設定 */
+/* スライド画像 */
 .slide {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0; /* 最初は隠す */
-    transition: opacity 2.0s ease; /* 2秒かけてふわっと切り替える */
+    opacity: 0;
+    transition: opacity 2.0s ease;
     z-index: 1;
 }
-
-/* アクティブなスライドだけ表示 */
 .slide.active {
-    opacity: 0.8; /* 少し暗くして文字を見やすくする（好みで1.0にしてもOK） */
+    opacity: 0.8;
     z-index: 2;
 }
-
 .slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* キャッチコピー（画像の上に表示） */
+/* キャッチコピー */
 .hero-text {
     position: absolute;
-    bottom: 30px; /* 点々とかぶらないよう少し上に */
+    bottom: 30px;
     right: 15px;
     color: var(--white);
     font-family: 'Zen Old Mincho', serif;
     font-size: 18px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
     letter-spacing: 0.1em;
-    z-index: 10; /* 画像より手前 */
+    z-index: 10;
 }
 
-/* 左右の矢印ボタン */
+/* 左右の矢印 */
 .slide-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0,0,0,0.3); /* 半透明の黒 */
+    background: rgba(0,0,0,0.3);
     color: var(--white);
     border: none;
     padding: 10px 15px;
@@ -235,12 +245,12 @@ h2 {
     transition: background 0.3s;
 }
 .slide-arrow:hover {
-    background: var(--main-color); /* ホバー時はオールドローズ色に */
+    background: var(--main-color);
 }
 .prev { left: 0; border-radius: 0 5px 5px 0; }
 .next { right: 0; border-radius: 5px 0 0 5px; }
 
-/* 下の丸い点々（インジケーター） */
+/* インジケーター（点々） */
 .slide-dots {
     position: absolute;
     bottom: 10px;
@@ -250,7 +260,6 @@ h2 {
     gap: 10px;
     z-index: 20;
 }
-
 .dot {
     width: 10px;
     height: 10px;
@@ -259,22 +268,9 @@ h2 {
     cursor: pointer;
     transition: all 0.3s;
 }
-
-/* 今見ているスライドの点はオールドローズ色 */
 .dot.active {
     background-color: var(--main-color);
     transform: scale(1.2);
-}
-
-.hero-text {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    color: var(--white);
-    font-family: 'Zen Old Mincho', serif;
-    font-size: 18px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-    letter-spacing: 0.1em;
 }
 
 /* コンテンツ共通の余白 */
@@ -328,18 +324,39 @@ h2 {
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
-/* メニューエリア */
-.menu-img {
+/* --- メニューエリア（画像ズーム対応） --- */
+.menu-img-wrap {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: 250px;
+    overflow: hidden;
     border-radius: 4px;
     margin-bottom: 15px;
+    position: relative;
 }
 
+.menu-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, transform-origin 0.5s ease;
+    transform-origin: center center;
+}
+
+/* ズーム設定 */
+.menu-img[class*="zoom-"] { transform: scale(1.6); }
+
+/* 各メニューのズーム位置 */
+.zoom-coffee { transform-origin: 20% 70%; }
+.zoom-latte { transform-origin: 50% 30%; }
+.zoom-scone { transform-origin: 50% 80%; }
+.zoom-cake { transform-origin: 35% 50%; }
+.zoom-sand { transform-origin: 80% 60%; }
+.zoom-pudding { transform-origin: 90% 70%; }
+
+/* --- メニューリスト --- */
 .menu-list {
     list-style: none;
-    padding: 0;
+    padding: 0; /* 左の余白をリセット（線ずれ防止） */
     margin: 0;
     font-size: 15px;
 }
@@ -347,10 +364,22 @@ h2 {
 .menu-list li {
     margin-bottom: 8px;
     border-bottom: 1px dotted rgba(74, 59, 50, 0.3);
-    padding-bottom: 2px;
+    
+    /* インデントと線のバランス調整 */
+    padding-left: 15px;  /* 文字を字下げ */
+    padding-right: 5px;  /* 右側を少し空ける */
+    padding-bottom: 5px;
+    
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.menu-list li:hover {
+    color: var(--main-color);
 }
 
 .tax-note {
@@ -366,7 +395,7 @@ h2 {
     color: #666;
 }
 
-/* 店舗情報エリア */
+/* --- 店舗情報エリア --- */
 .access-list {
     list-style: none;
     padding: 0;
@@ -386,7 +415,7 @@ h2 {
     margin-right: 10px;
     margin-top: 4px;
     font-size: 16px;
-    color: var(--main-color); /* アイコンもメインカラーに */
+    color: var(--main-color);
 }
 
 /* マップ */
@@ -405,38 +434,48 @@ h2 {
     border: 0;
 }
 
-/* ボタン */
+/* --- ボタン（スタイリッシュ・カプセル型） --- */
 .btn-area {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 15px;
+    margin-top: 30px;
 }
 
 .btn {
     display: block;
     width: 100%;
-    padding: 15px 0;
+    padding: 10px 0; /* スリムに */
+    
     background-color: var(--accent-color);
     color: var(--white);
     text-align: center;
     text-decoration: none;
-    border-radius: 6px;
+    
+    border-radius: 50px; /* カプセル型 */
+    font-family: 'Zen Old Mincho', serif; /* 高級感 */
+    letter-spacing: 0.1em;
+    
     font-size: 16px;
     font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    transition: opacity 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+    border: 1px solid var(--accent-color);
 }
 
 .btn:hover {
-    opacity: 0.9;
+    background-color: var(--white);
+    color: var(--accent-color);
+    opacity: 1;
 }
 
 .btn small {
     display: block;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: normal;
-    margin-top: 2px;
+    margin-top: 0;
+    opacity: 0.8;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
 }
 
 /* フッター */
@@ -447,7 +486,7 @@ footer {
     margin-top: 40px;
 }
 
-/* Q&A */
+/* --- Q&A（アコーディオン） --- */
 .faq-title {
     list-style: none;
     cursor: pointer;
@@ -492,7 +531,7 @@ details[open] .faq-title i {
 
 .faq-answer {
     padding: 10px 15px;
-    background-color: rgba(158, 122, 122, 0.1); /* メインカラーの薄い色に変更 */
+    background-color: rgba(158, 122, 122, 0.1); /* メインカラーの薄い背景 */
     font-size: 14px;
     margin-bottom: 15px;
     border-radius: 4px;
@@ -508,3 +547,22 @@ details[open] .faq-title i {
     color: var(--main-color);
     margin-right: 5px;
 }
+
+/* サイト内の画像すべてをレトロな雰囲気に */
+img {
+    /* セピアを少し足し、コントラストを少し上げる */
+    filter: sepia(0.2) contrast(1.1) brightness(0.95);
+    transition: filter 0.3s;
+}
+
+/* マウスが乗ったら、本来の鮮やかな色に戻す */
+img:hover {
+    filter: sepia(0) contrast(1) brightness(1);
+}
+
+/* テキスト選択時の色を変更 */
+::selection {
+    background-color: var(--main-color); /* オールドローズ色 */
+    color: var(--white);
+}
+
