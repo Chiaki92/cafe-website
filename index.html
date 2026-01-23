@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="style.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Zen+Old+Mincho:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@400;500;700&family=Zen+Old+Mincho:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -18,9 +18,42 @@
         <h1>喫茶 吉田</h1>
     </header>
 
-    <div class="hero">
-        <img src="top.jpg" alt="ハンドドリップコーヒー">
+    <div class="hamburger-btn" id="js-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav class="drawer-menu" id="js-drawer">
+        <div class="drawer-inner">
+            <p class="menu-title">CONTENTS</p>
+            <ul>
+                <li><a href="#menu" class="nav-link">MENU</a></li>
+                <li><a href="#info" class="nav-link">INFORMATION</a></li>
+                <li><a href="#qa" class="nav-link">Q&A</a></li>
+            </ul>
+            <div class="drawer-footer">喫茶 吉田</div>
+        </div>
+    </nav>
+    <div class="menu-overlay" id="js-overlay"></div>
+  
+    <div class="hero" id="js-hero">
+        <div class="slide active">
+            <img src="top.jpg" alt="ハンドドリップ">
+        </div>
+        <div class="slide">
+            <img src="top2.png" alt="店内の様子">
+        </div>
+        <div class="slide">
+            <img src="top3.jpg" alt="テラス席">
+        </div>
+
         <div class="hero-text">心をほどく、一杯の魔法。</div>
+
+        <button class="slide-arrow prev" id="js-prev">❮</button>
+        <button class="slide-arrow next" id="js-next">❯</button>
+        
+        <div class="slide-dots" id="js-dots"></div>
     </div>
 
     <div class="content-padding">
@@ -38,15 +71,6 @@
             <img src="master.png" alt="店主写真" class="intro-img">
         </div>
 
-        <nav class="page-nav">
-            <a href="#menu">MENU</a>
-            <span class="divider">|</span>
-            <a href="#info">INFORMATION</a>
-            <span class="divider">|</span>
-            <a href="#qa">Q&A</a>
-        </nav>
-
-
         <section id="menu">
             <h2>MENU: 当店の定番</h2>
             <img src="menu.jpg" alt="メニューセット" class="menu-img">
@@ -63,8 +87,6 @@
                 <i class="fa-solid fa-bag-shopping"></i> 2026年春よりテイクアウト開始予定 <i class="fa-solid fa-bag-shopping"></i>
             </div>
         </section>
-
-
 
         <section id="info">
             <h2>INFORMATION: 店舗情報</h2>
@@ -119,7 +141,8 @@
             </div>
         </section>
     </div>
-<div class="content-padding">
+    
+    <div class="content-padding">
         <section class="faq-section" id="qa">
             <details>
                 <summary class="faq-title">
@@ -155,11 +178,90 @@
         </section>
     </div>
 
-
     <footer>
         © 2026 Kissa Yoshida
     </footer>
 </div>
+
+<script>
+    // ▼▼▼ 1. ハンバーガーメニューの制御 ▼▼▼
+    const hamburgerBtn = document.getElementById('js-hamburger');
+    const drawerMenu = document.getElementById('js-drawer');
+    const overlay = document.getElementById('js-overlay');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function toggleDrawer() {
+        hamburgerBtn.classList.toggle('active');
+        drawerMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+
+    hamburgerBtn.addEventListener('click', toggleDrawer);
+    overlay.addEventListener('click', toggleDrawer);
+    navLinks.forEach(link => {
+        link.addEventListener('click', toggleDrawer);
+    });
+
+    // ▼▼▼ 2. スライドショーの制御 ▼▼▼
+    const slides = document.querySelectorAll('.slide');
+    const nextBtn = document.getElementById('js-next');
+    const prevBtn = document.getElementById('js-prev');
+    const dotsContainer = document.getElementById('js-dots');
+    
+    let currentSlide = 0;
+    let slideInterval;
+
+    // 丸い点々（ドット）を画像の数だけ自動で作る
+    if (slides.length > 0) { // エラー防止：スライドがある時だけ実行
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        });
+    }
+    const dots = document.querySelectorAll('.dot');
+
+    // スライドを切り替える関数
+    function goToSlide(n) {
+        if (slides.length === 0) return; // エラー防止
+
+        // 現在のactiveクラスを外す
+        slides[currentSlide].classList.remove('active');
+        if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+        
+        // 次の番号を計算（ループさせる）
+        currentSlide = (n + slides.length) % slides.length;
+        
+        // 新しいスライドにactiveクラスをつける
+        slides[currentSlide].classList.add('active');
+        if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+        
+        // 手動で操作したら、タイマーをリセットする
+        resetTimer();
+    }
+
+    // 次へ・前へボタンの動作
+    if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+    if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+
+    // 自動再生タイマー
+    function startTimer() {
+        slideInterval = setInterval(() => {
+            goToSlide(currentSlide + 1);
+        }, 5000); 
+    }
+
+    function resetTimer() {
+        clearInterval(slideInterval);
+        startTimer();
+    }
+
+    // ページが開いたらタイマースタート
+    startTimer();
+</script>
+
 
 </body>
 </html>
