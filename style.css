@@ -48,7 +48,10 @@ body {
 header {
     text-align: center;
     padding: 20px 0;
-    border-bottom: 1px solid var(--main-color);
+    
+    /* ▼▼▼ ここを変更（メインカラー → アクセントカラー） ▼▼▼ */
+    border-bottom: 1px solid var(--accent-color); 
+    
     background-color: transparent;
 }
 
